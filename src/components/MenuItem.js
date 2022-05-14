@@ -4,7 +4,7 @@ const MenuItem = (item) => {
         
         <section>
             <div className='flex flex-row pb-0 px-3 font-medium mb-0 mt-2'>
-                <div className="basis-3/4">{ item.item.name }</div>
+                <div className="basis-3/4">{ item.item.name.toUpperCase() }</div>
                 <div className="basis-1/4 text-right">{ item.item.price }</div>
             </div>
             { item.item.tags &&
@@ -20,7 +20,7 @@ const MenuItem = (item) => {
             }
             { item.item.description &&
                 <div className='text-left pb-3 px-3 font-light text-s'>
-                    { item.item.description }
+                    { item.item.description.toLowerCase() }
                 </div>
             }
         </section> 

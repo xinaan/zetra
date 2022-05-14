@@ -35,7 +35,7 @@ export default function Home(){
                 { outletData && outletData.map((property, index) => (
                     <section className='grid grid-cols-1 gap-3 md:grid-cols-2' key={ index }>
                         { property.outlets.map((outlet) => (
-                            <Panel id = { outlet._id } name = { outlet.name } url = { outlet.thumb.asset.url } type = 'outlet'/>
+                            <Panel id = { outlet._id } name = { outlet.name } url = { outlet.thumb && outlet.thumb.asset.url } type = 'outlet'/>
                         ))}
                     </section>
                 ))}

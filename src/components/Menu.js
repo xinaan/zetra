@@ -43,7 +43,7 @@ export default function Menu(){
                         { menus.catergory.map((item, index) => (
                             <section key={ item._id }>
                             <div className='text-left pb-3 px-3 border-b-4  border-teal-800 font-bold mb-2 text-teal-600'>
-                                { item.name }
+                                { item.name.toUpperCase() }
                             </div>
 
                             { item.items.map((el) => (

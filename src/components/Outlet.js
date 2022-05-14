@@ -33,7 +33,7 @@ export default function Outlet(){
                 { outletMenu && outletMenu.map((outlet, index) => (
                     <section key={ outlet._id }>
                         { outlet.menus.map((menu) => (
-                            <Panel id = { menu._id } name = { menu.name } url = { menu.thumb.asset.url } type = 'menu'/>
+                            <Panel id = { menu._id } name = { menu.name } url = { menu.thumb && menu.thumb.asset.url } type = 'menu'/>
                         ))}
                     </section>
                 ))}
