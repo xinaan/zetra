@@ -7,6 +7,12 @@ import Panel from './Panel.js';
 export default function Outlet(){
     const [outletMenu, setOutletMenu] = useState(null);
     const { id } = useParams();
+
+    const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+    const d = new Date();
+    let day = weekday[d.getDay()];
+
     useEffect(() => {
         sanityClient
             .fetch(`*[_type == 'outlet' && _id =='${id}']{
@@ -32,8 +38,15 @@ export default function Outlet(){
                 <div className='mt-16'></div>
                 { outletMenu && outletMenu.map((outlet, index) => (
                     <section key={ outlet._id }>
-                        { outlet.menus.map((menu) => (
-                            <Panel id = { menu._id } name = { menu.name } url = { menu.thumb && menu.thumb.asset.url } type = 'menu'/>
+                        { outlet.menus && outlet.menus.map((menu) => (
+                            <div>
+                                { menu.name === day &&
+                                    <Panel id = { menu._id } name = { 'Daily Menu - ' + menu.name } url = { menu.thumb && menu.thumb.asset.url } type = 'menu'/>
+                                }
+                                { menu.name.length > 9 &&
+                                    <Panel id = { menu._id } name = { menu.name } url = { menu.thumb && menu.thumb.asset.url } type = 'menu'/>
+                                }
+                            </div>
                         ))}
                     </section>
                 ))}
