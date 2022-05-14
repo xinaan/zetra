@@ -30,7 +30,7 @@ export default function Home(){
     
     return (
   
-        <main className='container mx-auto px-4 py-5 bg-sky-50 mt-0.5 lg:w-4/12'>
+        <main className='container mx-auto px-4 py-5 bg-sky-50 mt-0.5 lg:w-4/12 mb-10'>
                 <div className='mt-16'></div>
                 { outletData && outletData.map((property, index) => (
                     <section className='grid grid-cols-1 gap-3 md:grid-cols-2' key={ index }>

@@ -33,7 +33,7 @@ export default function Outlet(){
               
     },[id]);
     return (
-        <main className='container mx-auto px-4 py-5 bg-sky-50 mt-0.5 lg:w-4/12'>
+        <main className='container mx-auto px-4 py-5 bg-sky-50 mt-0.5 lg:w-4/12 mb-10'>
             <section >
                 <div className='mt-16'></div>
                 { outletMenu && outletMenu.map((outlet, index) => (
