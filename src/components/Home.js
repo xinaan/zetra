@@ -7,6 +7,7 @@ import Panel from './Panel.js';
 
 export default function Home(){
     const [outletData, setOutlet] = useState(null);
+    
     useEffect(() => {
         sanityClient
             .fetch(`*[_type == 'property' && name =='You & Me Maldives']{
@@ -39,6 +40,7 @@ export default function Home(){
                         ))}
                     </section>
                 ))}
+
                    
         </main>
     )

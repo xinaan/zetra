@@ -1,17 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = (item) => {
+    const navigate = useNavigate();
+    const currentpage = window.location.pathname;
+    console.log(currentpage);
     return (
-        <footer className="bg-slate-300 py-3 fixed bottom-0 z-50 w-full">
-            <div className='container mx-auto'>
-            <div className='flex flex-row px-7 justify-between gap-5 text-center tracking-widest font-semibold text-xl text-slate-800'>
-                <Link to = { '/'}><h1 className='text-teal-700 px-4'>BACK</h1></Link>
-                <Link to = { '/'}><h1 className='text-teal-700 px-4'>HOME</h1></Link>
+        <div>
+        { currentpage !== '/' && 
+            <footer className="bg-slate-200 py-3 fixed bottom-0 z-50 w-full backdrop-blur-md bg-opacity-70">
+                <div className='container mx-auto md:w-1/4'>
+                    <div className='flex flex-row px-7 justify-between items-center gap-5 text-center tracking-widest font-semibold text-xl text-slate-800'>
+                        <img src={process.env.PUBLIC_URL + '/icons/back.svg'} alt='back icon' className='w-8 h-8 cursor-pointer' onClick={() => navigate(-1)}/>
+                        <img src={process.env.PUBLIC_URL + '/icons/home.svg'} alt='home icon' className='w-10 h-10 cursor-pointer' onClick={() => navigate('/')}/>
+                        <img src={process.env.PUBLIC_URL + '/icons/menu.svg'} alt='back icon' className='w-8 h-8 cursor-pointer' onClick={() => navigate(-1)}/>
 
-            </div>
-            </div>
-        </footer>
+                    </div>
+                </div>
+            </footer>
+        }
+        </div>
     );
 }
 
