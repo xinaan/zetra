@@ -55,13 +55,13 @@ export default function Menu(){
                             </div>
 
                             { item.items && item.items.map((el) => (
-                                <MenuItem item = { el } />
+                                <div key={el._id}><MenuItem item = { el } /></div>
                             ))}
                             </section>
                         ))}
                         
                         { menuShown && <MenuSection item = { menus.catergory } menuClick={menuClick}/>}
-                        <div className='fixed bottom-16 right-5 rounded-full px-4 py-2 bg-cyan-700 text-cyan-50 shadow-md hover:bg-teal-700 z-50' onClick={ menuClick }>MENU</div>
+                        <div className='fixed bottom-20 right-5 rounded-full px-4 py-2 bg-cyan-700 text-cyan-50 shadow-md hover:bg-teal-700 z-50' onClick={ menuClick }>MENU</div>
                     </section>
                 ))}
                    

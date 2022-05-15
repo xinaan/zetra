@@ -39,12 +39,12 @@ export default function Outlet(){
                 { outletMenu && outletMenu.map((outlet, index) => (
                     <section key={ outlet._id }>
                         { outlet.menus && outlet.menus.map((menu) => (
-                            <div>
+                            <div key={ menu._id }>
                                 { menu.name === day &&
-                                    <Panel id = { menu._id } name = { 'Daily Menu - ' + menu.name } url = { menu.thumb && menu.thumb.asset.url } type = 'menu'/>
+                                    <div key={menu._id}><Panel id = { menu._id } name = { 'Daily Menu - ' + menu.name } url = { menu.thumb && menu.thumb.asset.url } type = 'menu'/></div>
                                 }
                                 { menu.name.length > 9 &&
-                                    <Panel id = { menu._id } name = { menu.name } url = { menu.thumb && menu.thumb.asset.url } type = 'menu'/>
+                                    <div key={menu._id}><Panel id = { menu._id } name = { menu.name } url = { menu.thumb && menu.thumb.asset.url } type = 'menu'/></div>
                                 }
                             </div>
                         ))}

@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 const Footer = (item) => {
     const navigate = useNavigate();
     const currentpage = window.location.pathname;
-    console.log(currentpage);
     return (
         <div>
         { currentpage !== '/' && 

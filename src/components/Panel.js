@@ -4,7 +4,7 @@ const Panel = ({id, name, url, type}) => {
     
     return (
         
-        <section key={ id }>
+        <section key={ id } className='transition duration-150 ease-out'>
             <Link to={ '/' + type +'/' + id} key={ id }>
                 <div className='text-left mb-3 block relative h-32 rounded-lg drop-shadow'>
                     <img src={ url && url} alt={ name } className= 'rounded-md h-full w-full object-cover absolute'/>

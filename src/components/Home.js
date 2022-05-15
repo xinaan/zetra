@@ -34,9 +34,9 @@ export default function Home(){
         <main className='container mx-auto px-4 py-5 bg-sky-50 mt-0.5 lg:w-4/12 mb-10'>
                 <div className='mt-16'></div>
                 { outletData && outletData.map((property, index) => (
-                    <section className='grid grid-cols-1 gap-3 md:grid-cols-2' key={ index }>
+                    <section className='grid grid-cols-1 gap-3 md:grid-cols-2' key={ property.name }>
                         { property.outlets.map((outlet) => (
-                            <Panel id = { outlet._id } name = { outlet.name } url = { outlet.thumb && outlet.thumb.asset.url } type = 'outlet'/>
+                            <div key={outlet._id}><Panel id = { outlet._id } name = { outlet.name } url = { outlet.thumb && outlet.thumb.asset.url } type = 'outlet'/></div>
                         ))}
                     </section>
                 ))}
