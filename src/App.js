@@ -20,12 +20,13 @@ function App() {
     <BrowserRouter>
       
       <Header title = { header.title } subtitle = { header.subtitle }/>
+      
       <Footer />
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/outlet/:id" element={<Outlet/> } />
-        <Route exact path="/menu/:id" element={<Menu/>} />
-      </Routes>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/outlet/:id" element={<Outlet/> } />
+          <Route exact path="/menu/:id" element={<Menu/>} />
+        </Routes>
     </BrowserRouter>
   );
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import sanityClient from '../client.js';
 import MenuItem from './MenuItem.js';
 import MenuSection from './MenuCatergory.js';
+import SubItem from './SubItem.js';
 
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -32,6 +33,20 @@ export default function Menu(){
                       _id,
                       name
                     }
+                  },
+                  sub[]->{
+                    _id,
+                    name,  
+                    items[]->{
+                    _id,
+                    name,
+                    description,
+                    price,
+                    tags[]->{
+                      _id,
+                      name
+                    }
+                  }
                   }
               }}`)
               .then((data) => setMenu(data))
@@ -56,6 +71,10 @@ export default function Menu(){
 
                             { item.items && item.items.map((el) => (
                                 <div key={el._id}><MenuItem item = { el } /></div>
+                            ))}
+
+                            { item.sub && item.sub.map((sub) => (
+                                <div key={sub._id}><SubItem item = { sub } /></div>
                             ))}
                             </section>
                         ))}
