@@ -16,8 +16,11 @@ const Footer = (item) => {
 
                     </div>
                 </div>
+                
             </footer>
+            
         }
+        
         </div>
     );
 }

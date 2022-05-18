@@ -2,10 +2,12 @@ import React from 'react';
 import sanityClient from '../client.js';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import ReactLoading from 'react-loading';
 import Panel from './Panel.js';
 
 export default function Outlet(){
     const [outletMenu, setOutletMenu] = useState(null);
+    const [done ,setDone] = useState(undefined);
     const { id } = useParams();
 
     const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -28,7 +30,10 @@ export default function Outlet(){
                     }
                 }
               }}`)
-              .then((data) => setOutletMenu(data))
+              .then((data) => {
+                  setOutletMenu(data);
+                  setDone(true);
+              })
               .catch(console.error);
               
     },[id]);
@@ -36,6 +41,8 @@ export default function Outlet(){
         <main className='container mx-auto px-4 py-5 bg-sky-50 mt-0.5 lg:w-4/12 mb-10'>
             <section >
                 <div className='mt-16'></div>
+                { !done ? <div className='grid place-items-center h-screen -mt-24'><ReactLoading type={'spin'} color={'#0D9488'} height={50} width={50} /></div> :
+                <>
                 { outletMenu && outletMenu.map((outlet, index) => (
                     <section key={ outlet._id }>
                         { outlet.menus && outlet.menus.map((menu) => (
@@ -50,6 +57,8 @@ export default function Outlet(){
                         ))}
                     </section>
                 ))}
+                </>
+                }
                    
                 
             </section>
