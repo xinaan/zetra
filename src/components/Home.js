@@ -11,7 +11,7 @@ export default function Home(){
 
     useEffect(() => {
         sanityClient
-            .fetch(`*[_type == 'property' && name =='You & Me Maldives']{
+            .fetch(`*[_type == 'property' && name =='Cocoon Maldives']{
                 name,
                 outlets[]->{
                   _id,
