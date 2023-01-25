@@ -4,11 +4,14 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ReactLoading from 'react-loading';
 import Panel from './Panel.js';
+import Cookies from 'universal-cookie';
 
 export default function Outlet(){
     const [outletMenu, setOutletMenu] = useState(null);
     const [done ,setDone] = useState(undefined);
     const { id } = useParams();
+    const cookies = new Cookies();
+    const lang = cookies.get('lang');
 
     const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
@@ -23,6 +26,7 @@ export default function Outlet(){
                 menus[]->{
                   _id,
                   name,
+                  tname,
                   thumb{
                     asset->{
                       _id,
@@ -48,10 +52,10 @@ export default function Outlet(){
                         { outlet.menus && outlet.menus.map((menu) => (
                             <div key={ menu._id }>
                                 { menu.name === day &&
-                                    <div key={menu._id}><Panel id = { menu._id } name = { 'Daily Menu - ' + menu.name } url = { menu.thumb && menu.thumb.asset.url } type = 'menu'/></div>
+                                    <div key={menu._id}><Panel id = { menu._id } name = { menu.tname?.split('+')[lang] == null? 'Daily Menu - ' + menu.name : menu.tname?.split('+')[lang]} url = { menu.thumb && menu.thumb.asset.url } type = 'menu'/></div>
                                 }
                                 { menu.name.length > 9 &&
-                                    <div key={menu._id}><Panel id = { menu._id } name = { menu.name } url = { menu.thumb && menu.thumb.asset.url } type = 'menu'/></div>
+                                    <div key={menu._id}><Panel id = { menu._id } name = { menu.tname?.split('+')[lang] == null? menu.name : menu.tname?.split('+')[lang] } url = { menu.thumb && menu.thumb.asset.url } type = 'menu'/></div>
                                 }
                             </div>
                         ))}
